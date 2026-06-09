@@ -20,5 +20,9 @@ public class projectileMove : MonoBehaviour
         transform.Translate(Vector2.right * 1.25f);
         ticker = 0;
     };
+        if (transform.position.x > 20f)
+        {
+            Destroy(gameObject);
+        }
     }
 }
