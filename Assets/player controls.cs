@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
 {
     float speed = 5f;
     public Rigidbody2D movement;
+    public GameObject projectile; 
+    float ticker = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +20,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ticker += Time.deltaTime;
         float yPosition = transform.position.y;
         double min = -3.5;
         double max = 5;
@@ -40,6 +43,13 @@ public class Movement : MonoBehaviour
         if (yPosition >= max)
         {
             movement.linearVelocityY = -1;
+        }
+
+
+        if (ticker >= 1.5f)
+        {
+            Instantiate(projectile, transform.position + transform.right * -2.5f, transform.rotation);
+            ticker = 0;
         }
     }
 }
