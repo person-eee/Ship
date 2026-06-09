@@ -1,3 +1,4 @@
+using System.Numerics;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,17 +18,28 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 yPosition = transform.position;
+        float yPosition = transform.position.y;
+        double min = -3.5;
+        double max = 5;
         if (UnityEngine.Input.GetKeyDown(KeyCode.W) 
         || UnityEngine.Input.GetKeyDown(KeyCode.UpArrow))
         {
-            movement.linearVelocity = (Vector2.up) * speed;
+            movement.linearVelocity = UnityEngine.Vector2.up * speed;
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.S) 
         || UnityEngine.Input.GetKeyDown(KeyCode.DownArrow))
         {
-            movement.linearVelocity = (Vector2.down) * speed;
+            movement.linearVelocity = UnityEngine.Vector2.down * speed;
         }
 
+
+        if (yPosition <= min)
+        {
+            movement.linearVelocityY = 1;
+        }
+        if (yPosition >= max)
+        {
+            movement.linearVelocityY = -1;
+        }
     }
 }
