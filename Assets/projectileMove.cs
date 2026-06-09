@@ -19,7 +19,6 @@ public class projectileMove : MonoBehaviour
         if(ticker >= interval){
         transform.Translate(Vector2.right * 1.25f);
         ticker = 0;
-        Debug.Log("happens");
     };
     }
 }
