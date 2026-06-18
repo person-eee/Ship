@@ -28,7 +28,7 @@ public class Spawning : MonoBehaviour
             Instantiate(projectile, position, transform.rotation);
             ticker = 0;
         }
-        if (ender>=10)
+        if (ender>=35f)
         {
             ender = 0;
             Instantiate(island,transform.position, transform.rotation);
